@@ -56,7 +56,6 @@ jobs:
 
       - name: Get the tag name
         id: get_version
-        # shellcheck disable=SC2086
         run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
       - name: Build and push Landing Page Docker image
