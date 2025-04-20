@@ -29,3 +29,5 @@ jobs:
           VALIDATE_MARKDOWN_PRETTIER: false
           # no yaml prettier
           VALIDATE_YAML_PRETTIER: false
+          # do not use the checkov, we just hadolint
+          VALIDATE_CHECKOV: false
