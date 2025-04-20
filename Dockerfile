@@ -2,8 +2,12 @@
 #
 FROM debian:bookworm-slim
 
+# linter ignore instructions 
+#
 # checkov:skip=CKV_DOCKER_2:Not defining a health check in the base image
 # checkov:skip=CKV_DOCKER_3:Not defining a user in the base image
+#
+# hadolint ignore=DL3008,DL3010
 
 # Environment variables
 #
@@ -17,7 +21,7 @@ ARG S6_OVERLAY_VERSION=3.2.0.2
 # now install additional tools
 #
 RUN apt-get update -y && apt-get upgrade -y \
-    && apt-get install -y procps xz-utils
+    && apt-get install -y --no-install-recommends procps xz-utils
 
 # cleanup
 #
