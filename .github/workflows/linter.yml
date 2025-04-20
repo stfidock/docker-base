@@ -31,3 +31,5 @@ jobs:
           VALIDATE_YAML_PRETTIER: false
           # do not use the checkov, we just hadolint
           VALIDATE_CHECKOV: false
+          # disable the action linter, as it freaks out with an shellcheck failure, that is not a failure
+          VALIDATE_GITHUB_ACTIONS: false
