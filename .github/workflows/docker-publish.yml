@@ -6,11 +6,6 @@ name: Docker Publish
 # documentation.
 
 on:
-  workflow_run:
-    workflows: ["Docker Image CI"]
-    types:
-      - completed
-
   #schedule:
     #- cron: '35 17 * * *'
   push:
@@ -29,6 +24,7 @@ env:
 
 jobs:
   publish:
+    needs: ["Docker build"]
 
     runs-on: ubuntu-latest
     permissions:
