@@ -2,6 +2,9 @@
 #
 FROM debian:bookworm-slim
 
+# checkov:skip=CKV_DOCKER_2:Not defining a health check in the base image
+# checkov:skip=CKV_DOCKER_3:Not defining a user in the base image
+
 ENV LC_ALL=C 
 ENV DEBIAN_FRONTEND=noninteractive
 
