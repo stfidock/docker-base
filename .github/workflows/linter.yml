@@ -31,5 +31,3 @@ jobs:
           VALIDATE_YAML_PRETTIER: false
           # do not use the checkov, we just hadolint
           VALIDATE_CHECKOV: false
-          # ensure the linter finds the action lint config file
-          GITHUB_ACTIONS_CONFIG_FILE: actionlint.yaml
