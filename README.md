@@ -1,12 +1,11 @@
 # stfi docker-base
 
-The baseimage for my docker containers.
+The baseimage for my docker containers, based on Debian Bookworm-Slim
 
 It contains:
-- debian bookworm-slim
 - updated os
 - core utils (ps, tar, xz, ...)
 - s6 overlay init system
-- linting
-- docker build
-- docker upload to dockerhub
+- actions: linting
+- actions: docker build
+- actions: docker upload to dockerhub
