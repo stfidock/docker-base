@@ -4,7 +4,6 @@
 # and push them to a private docker registry when a release tag (i.e.: 1.0.1)
 # is pushed to the repository.
 #
-# It runs on a self hosted runner.
 # You can change the runner to 'ubuntu-latest' if you want to use a GitHub hosted runner.
 #
 # Required actions secrets in the repository:
@@ -22,6 +21,7 @@ name: Build and Push Docker Image
 on:
   # Trigger the action manually from the UI
   workflow_dispatch:
+
   # Trigger the action when a version tag is pushed
   push:
     tags:
