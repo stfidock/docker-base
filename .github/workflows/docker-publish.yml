@@ -1,4 +1,4 @@
-name: Docker Publish
+name: Docker build and publish
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -6,6 +6,11 @@ name: Docker Publish
 # documentation.
 
 on:
+  workflow_run:
+    workflows: ["Lint Code Base"]
+    types:
+      - completed
+
   #schedule:
     #- cron: '35 17 * * *'
   push:
@@ -24,8 +29,6 @@ env:
 
 jobs:
   publish:
-    needs: ["Docker build"]
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
