@@ -19,11 +19,8 @@ ARG S6_OVERLAY_VERSION=3.2.0.2
 #
 RUN apt-get update -y \
     && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends procps xz-utils
-
-# cleanup
-#
-RUN apt-get remove -y --purge --auto-remove \
+    && apt-get install -y --no-install-recommends procps xz-utils \
+    && apt-get remove -y --purge --auto-remove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/* /var/tmp/*
