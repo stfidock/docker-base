@@ -25,7 +25,8 @@ RUN apt-get update -y \
 #
 RUN apt-get remove -y --purge --auto-remove \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* /var/tmp/*
 
 # get the s6 as the init in place
 # https://github.com/just-containers/s6-overlay
