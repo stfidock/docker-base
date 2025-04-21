@@ -30,14 +30,15 @@ RUN apt-get remove -y --purge --auto-remove \
 # get the s6 as the init in place
 # https://github.com/just-containers/s6-overlay
 #
+WORKDIR /tmp
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz /tmp
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz.sha256 /tmp
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-x86_64.tar.xz /tmp
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-x86_64.tar.xz.sha256 /tmp
-# hadolint ignore=DL3003
-RUN cd /tmp \
-    && sha256sum --check /tmp/s6-overlay*.sha256 \
+RUN sha256sum --check /tmp/s6-overlay*.sha256 \
     && tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz \
     && tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz
+
+WORKDIR /
 
 ENTRYPOINT ["/init"]
