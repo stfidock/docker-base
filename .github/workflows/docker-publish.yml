@@ -1,9 +1,12 @@
+---
+
 name: Docker build and publish
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: docker.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
 
 on:
   workflow_run:
@@ -11,20 +14,19 @@ on:
     types:
       - completed
 
-  #schedule:
-    #- cron: '35 17 * * *'
+  # Trigger the action manually from the UI
+  workflow_dispatch:
+
+  # schedule:
+    # - cron: '35 17 * * *'
+
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ '*.*.*' ]
+
   pull_request:
     branches: [ "main" ]
-
-env:
-  # Use docker.io for Docker Hub if empty
-  REGISTRY: docker.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
 
 
 jobs:
